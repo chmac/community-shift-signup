@@ -1,0 +1,6 @@
+- args:
+    sql: ALTER TABLE "public"."shifts" ADD COLUMN "slug" text
+  type: run_sql
+- args:
+    sql: ALTER TABLE "public"."shifts" ALTER COLUMN "slug" DROP NOT NULL
+  type: run_sql
