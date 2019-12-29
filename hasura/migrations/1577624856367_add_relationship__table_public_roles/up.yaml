@@ -1,0 +1,12 @@
+- args:
+    name: shifts
+    table:
+      name: roles
+      schema: public
+    using:
+      foreign_key_constraint_on:
+        column: role_id
+        table:
+          name: shifts
+          schema: public
+  type: create_array_relationship

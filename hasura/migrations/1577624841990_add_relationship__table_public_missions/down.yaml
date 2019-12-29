@@ -1,0 +1,6 @@
+- args:
+    relationship: roles
+    table:
+      name: missions
+      schema: public
+  type: drop_relationship

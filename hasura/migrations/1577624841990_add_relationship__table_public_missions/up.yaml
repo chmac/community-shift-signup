@@ -1,0 +1,12 @@
+- args:
+    name: roles
+    table:
+      name: missions
+      schema: public
+    using:
+      foreign_key_constraint_on:
+        column: mission_id
+        table:
+          name: roles
+          schema: public
+  type: create_array_relationship

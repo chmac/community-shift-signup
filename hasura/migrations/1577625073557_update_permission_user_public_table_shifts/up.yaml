@@ -1,0 +1,22 @@
+- args:
+    permission:
+      columns:
+      - count
+      - end_date
+      - end_time
+      - start_date
+      - start_time
+      filter:
+        role:
+          mission:
+            user_id:
+              _eq: X-Hasura-User-Id
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: user
+    table:
+      name: shifts
+      schema: public
+  type: create_update_permission

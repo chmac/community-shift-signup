@@ -1,0 +1,12 @@
+- args:
+    name: allocations
+    table:
+      name: shifts
+      schema: public
+    using:
+      foreign_key_constraint_on:
+        column: shift_id
+        table:
+          name: allocations
+          schema: public
+  type: create_array_relationship

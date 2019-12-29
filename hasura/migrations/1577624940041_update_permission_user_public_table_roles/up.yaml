@@ -1,0 +1,20 @@
+- args:
+    permission:
+      allow_upsert: true
+      check:
+        mission:
+          user_id:
+            _eq: X-Hasura-User-Id
+      columns:
+      - description_md
+      - mission_id
+      - name
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: user
+    table:
+      name: roles
+      schema: public
+  type: create_insert_permission

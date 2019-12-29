@@ -1,0 +1,8 @@
+- args:
+    name: mission
+    table:
+      name: roles
+      schema: public
+    using:
+      foreign_key_constraint_on: mission_id
+  type: create_object_relationship
