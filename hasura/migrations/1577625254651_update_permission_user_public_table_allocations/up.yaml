@@ -1,0 +1,24 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - email
+      - message
+      - name
+      - phone_number
+      - created_at
+      - updated_at
+      - id
+      - shift_id
+      filter:
+        shift:
+          role:
+            mission:
+              user_id:
+                _eq: X-Hasura-User-Id
+      limit: null
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: create_select_permission

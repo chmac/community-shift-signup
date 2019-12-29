@@ -1,0 +1,22 @@
+- args:
+    permission:
+      columns:
+      - email
+      - message
+      - name
+      - phone_number
+      filter:
+        shift:
+          role:
+            mission:
+              user_id:
+                _eq: X-Hasura-User-Id
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: create_update_permission

@@ -1,0 +1,13 @@
+- args:
+    permission:
+      filter:
+        shift:
+          role:
+            mission:
+              user_id:
+                _eq: X-Hasura-User-Id
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: create_delete_permission

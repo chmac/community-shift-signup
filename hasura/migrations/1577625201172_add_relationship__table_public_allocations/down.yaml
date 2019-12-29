@@ -1,0 +1,6 @@
+- args:
+    relationship: shift
+    table:
+      name: allocations
+      schema: public
+  type: drop_relationship
