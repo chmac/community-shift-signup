@@ -92,7 +92,6 @@ const startup = () => {
   const roles = getRoles();
 
   if (!!userId && !!roles && roles.length > 0) {
-    debugger;
     apollo
       .query<{
         user_profile: { id: string }[];
@@ -116,7 +115,6 @@ const startup = () => {
       })
       .catch(error => {
         // If we got a 401 error, then our token has expired
-        debugger;
         if (error.networkError?.statusCode === 401) {
           logout();
         } else {
