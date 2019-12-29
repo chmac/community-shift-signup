@@ -1,33 +1,39 @@
 # Hasura
 
-To see the total budget allocations per category one can use a query like so:
+Schema
 
-```sql
-SELECT budget_categories.id, budget_categories.name, budget_categories.budget_cents, SUM(receipt_budget_category_allocations.amount_cents) AS total_allocated_amount_cents
-FROM budget_categories
-INNER JOIN receipt_budget_category_allocations
-ON budget_categories.id = receipt_budget_category_allocations.budget_category_id
-GROUP BY budget_categories.id;
-```
-
-This can be run in the Hasura console (Date > SQL).
-
-One can also retrieve the same data with an aggregate query in GraphQL:
-
-```graphql
-{
-  budget_categories {
-    id
-    name
-    receipt_budget_category_allocations_aggregate(
-      distinct_on: budget_category_id
-    ) {
-      aggregate {
-        sum {
-          amount_cents
-        }
-      }
-    }
-  }
-}
-```
+* Profile
+  - id
+  - user_id
+  - profile_md
+* Mission
+  - id
+  - user_id
+  - name
+  - slug
+  - description_md
+  - created_at
+  - updated_at
+* Role
+  - id
+  - mission_id
+  - name
+  - description_md
+  - created_at
+  - updated_at
+* Shift
+  - id
+  - role_id
+  - count
+  - start_date
+  - start_time
+  - end_date
+  - end_time
+  - created_at
+  - updated_at
+* Allocation (Assignment OR Allocation OR Allotment)
+  - id
+  - shift_id
+  - user_id OR name / email / phone
+  - created_at
+  - updated_at
