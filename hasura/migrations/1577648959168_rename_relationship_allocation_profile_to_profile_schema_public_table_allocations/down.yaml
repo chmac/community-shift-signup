@@ -1,0 +1,7 @@
+- args:
+    name: profile
+    new_name: allocation_profile
+    table:
+      name: allocations
+      schema: public
+  type: rename_relationship

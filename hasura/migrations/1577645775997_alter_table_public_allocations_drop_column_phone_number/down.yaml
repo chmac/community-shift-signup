@@ -1,0 +1,6 @@
+- args:
+    sql: ALTER TABLE "public"."allocations" ADD COLUMN "phone_number" text
+  type: run_sql
+- args:
+    sql: ALTER TABLE "public"."allocations" ALTER COLUMN "phone_number" DROP NOT NULL
+  type: run_sql

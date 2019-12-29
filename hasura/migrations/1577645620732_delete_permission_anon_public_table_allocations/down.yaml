@@ -1,0 +1,14 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - shift_id
+      - user_id
+      computed_fields: []
+      filter: {}
+    role: anon
+    table:
+      name: allocations
+      schema: public
+  type: create_select_permission

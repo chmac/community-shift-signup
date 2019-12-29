@@ -1,0 +1,6 @@
+- args:
+    sql: ALTER TABLE "public"."allocations" ADD COLUMN "email" text
+  type: run_sql
+- args:
+    sql: ALTER TABLE "public"."allocations" ALTER COLUMN "email" DROP NOT NULL
+  type: run_sql

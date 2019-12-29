@@ -1,0 +1,18 @@
+- args:
+    permission:
+      check: {}
+      columns:
+      - email
+      - message
+      - name
+      - phone_number
+      - shift_id
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: anon
+    table:
+      name: allocations
+      schema: public
+  type: create_insert_permission

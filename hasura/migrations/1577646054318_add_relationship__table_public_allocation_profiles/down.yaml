@@ -1,0 +1,6 @@
+- args:
+    relationship: allocations
+    table:
+      name: allocation_profiles
+      schema: public
+  type: drop_relationship

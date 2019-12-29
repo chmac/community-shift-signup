@@ -1,0 +1,20 @@
+- args:
+    permission:
+      check:
+        user_id:
+          _eq: X-Hasura-User-Id
+      columns:
+      - display_name
+      - email
+      - name
+      - phone_number
+      - user_id
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: anon
+    table:
+      name: allocation_profiles
+      schema: public
+  type: create_insert_permission

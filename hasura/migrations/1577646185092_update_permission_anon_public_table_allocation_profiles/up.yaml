@@ -1,0 +1,13 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - user_id
+      filter: {}
+      limit: null
+    role: anon
+    table:
+      name: allocation_profiles
+      schema: public
+  type: create_select_permission

@@ -1,0 +1,19 @@
+- args:
+    permission:
+      columns:
+      - display_name
+      - email
+      - name
+      - phone_number
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      localPresets:
+      - key: ""
+        value: ""
+      set: {}
+    role: user
+    table:
+      name: allocation_profiles
+      schema: public
+  type: create_update_permission

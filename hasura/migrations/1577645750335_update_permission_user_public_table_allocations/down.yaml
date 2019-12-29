@@ -1,0 +1,30 @@
+- args:
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: drop_select_permission
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - email
+      - message
+      - name
+      - phone_number
+      - created_at
+      - updated_at
+      - id
+      - shift_id
+      computed_fields: []
+      filter:
+        shift:
+          role:
+            mission:
+              user_id:
+                _eq: X-Hasura-User-Id
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: create_select_permission

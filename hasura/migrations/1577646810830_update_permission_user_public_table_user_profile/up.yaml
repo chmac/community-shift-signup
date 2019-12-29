@@ -1,0 +1,17 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - created_at
+      - id
+      - profile_md
+      - updated_at
+      filter:
+        user_id:
+          _eq: X-Hasura-User-Id
+      limit: null
+    role: user
+    table:
+      name: user_profile
+      schema: public
+  type: create_select_permission

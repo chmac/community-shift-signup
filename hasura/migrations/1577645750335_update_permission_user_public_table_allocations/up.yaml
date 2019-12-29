@@ -1,0 +1,28 @@
+- args:
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: drop_select_permission
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - created_at
+      - id
+      - message
+      - shift_id
+      - updated_at
+      - user_id
+      computed_fields: []
+      filter:
+        shift:
+          role:
+            mission:
+              user_id:
+                _eq: X-Hasura-User-Id
+    role: user
+    table:
+      name: allocations
+      schema: public
+  type: create_select_permission

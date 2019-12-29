@@ -1,0 +1,3 @@
+- args:
+    sql: DROP TABLE "public"."allocation_profiles"
+  type: run_sql

@@ -1,0 +1,28 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - display_name
+      - email
+      - name
+      - phone_number
+      - user_id
+      - created_at
+      - updated_at
+      - id
+      filter:
+        _or:
+        - user_id:
+            _eq: X-Hasura-User-Id
+        - allocations:
+            shift:
+              role:
+                mission:
+                  user_id:
+                    _eq: X-Hasura-User-Id
+      limit: null
+    role: user
+    table:
+      name: allocation_profiles
+      schema: public
+  type: create_select_permission
