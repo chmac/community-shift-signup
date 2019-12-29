@@ -19,6 +19,7 @@ import { AppState } from "../../store";
 import Bar from "../Bar/Bar.scene";
 import Home from "../Home/Home.scene";
 import MissionNew from "../MissionNew/MissionNew.scene";
+import MissionSingle from "../MissionSingle/MissionSingle.scene";
 
 const baseTheme = createMuiTheme();
 const theme = responsiveFontSizes(baseTheme);
@@ -38,6 +39,7 @@ const Routes = (props: Props) => {
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/missions/new" component={MissionNew} />
+              <Route exact path="/missions/:id" component={MissionSingle} />
             </Switch>
           ) : (
             <>
