@@ -83,11 +83,11 @@ const MissionSingle: React.FC<Props> = props => {
         mission.roles.map(role => {
           return (
             <div key={role.id}>
-              <h2>{role.name}</h2>
               <Paper elevation={1} className={classes.paper}>
+                <h2>{role.name}</h2>
                 <Markdown>{role.description_md}</Markdown>
+                <ShiftIndex shifts={role.shifts} />
               </Paper>
-              <ShiftIndex shifts={role.shifts} />
             </div>
           );
         })}
@@ -111,7 +111,9 @@ const MissionSingle: React.FC<Props> = props => {
 const styles = (theme: Theme) =>
   createStyles({
     paper: {
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
+      marginTop: theme.spacing(2),
+      marginBottom: theme.spacing(2)
     },
     card: {
       minWidth: 275
