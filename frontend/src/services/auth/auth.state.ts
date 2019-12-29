@@ -8,17 +8,28 @@ interface LoginSuccessfulAction extends Action<typeof LOGIN_SUCCESSFUL> {
   payload: {
     userId: string;
     roles: string[];
+    hasUserProfile?: boolean;
+    hasAllocationProfile?: boolean;
   };
 }
-export const loginSuccessful = (
-  userId: string,
-  roles: string[]
-): LoginSuccessfulAction => {
+export const loginSuccessful = ({
+  userId,
+  roles,
+  hasUserProfile,
+  hasAllocationProfile
+}: {
+  userId: string;
+  roles: string[];
+  hasUserProfile?: boolean;
+  hasAllocationProfile?: boolean;
+}): LoginSuccessfulAction => {
   return {
     type: LOGIN_SUCCESSFUL,
     payload: {
       userId,
-      roles
+      roles,
+      hasUserProfile,
+      hasAllocationProfile
     }
   };
 };
@@ -45,11 +56,15 @@ type State = {
   isLoggedIn: boolean;
   userId: string;
   roles: string[];
+  hasUserProfile?: boolean;
+  hasAllocationProfile?: boolean;
 };
 const empty = {
   isLoggedIn: false,
   userId: "",
-  roles: []
+  roles: [],
+  hasUserProfile: false,
+  hasAllocationProfile: false
 };
 
 type AuthActions = LoginSuccessfulAction | LogoutAction;
@@ -61,7 +76,13 @@ const reducer = (state: State = empty, action: AuthActions) => {
         ...state,
         isLoggedIn: true,
         userId: action.payload.userId,
-        roles: action.payload.roles
+        roles: action.payload.roles,
+        ...(typeof action.payload.hasUserProfile === "boolean"
+          ? { hasUserProfile: action.payload.hasUserProfile }
+          : {}),
+        ...(typeof action.payload.hasAllocationProfile === "boolean"
+          ? { hasUserProfile: action.payload.hasAllocationProfile }
+          : {})
       };
     }
 
