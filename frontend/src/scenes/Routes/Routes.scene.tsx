@@ -1,14 +1,8 @@
 import React from "react";
 import { Router, Switch, Route } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import { connect, useSelector } from "react-redux";
-import {
-  createStyles,
-  withStyles,
-  WithStyles,
-  Theme,
-  createMuiTheme
-} from "@material-ui/core";
+import { useSelector } from "react-redux";
+import { createStyles, Theme, createMuiTheme } from "@material-ui/core";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import { responsiveFontSizes, makeStyles } from "@material-ui/core/styles";
