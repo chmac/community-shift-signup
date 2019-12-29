@@ -1,8 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
+import { connect, useSelector } from "react-redux";
 
-import { createStyles, withStyles, WithStyles, Theme } from "@material-ui/core";
+import {
+  createStyles,
+  withStyles,
+  WithStyles,
+  Theme,
+  makeStyles
+} from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -12,8 +18,13 @@ import { AppState } from "../../store";
 import { showLock, logout } from "../../services/auth/auth.service";
 import { doesUserHaveRole } from "../../services/auth/auth.state";
 
-const Bar: React.FC<Props> = props => {
-  const { classes, isLoggedIn, isAdmin } = props;
+const Bar: React.FC<{}> = () => {
+  const classes = useStyles();
+
+  const isLoggedIn = useSelector((state: AppState) => state.auth.isLoggedIn);
+  const isAdmin = useSelector((state: AppState) =>
+    doesUserHaveRole(state, "admin")
+  );
 
   return (
     <div className={classes.root}>
@@ -59,14 +70,7 @@ const Bar: React.FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    isLoggedIn: state.auth.isLoggedIn,
-    isAdmin: doesUserHaveRole(state, "admin")
-  };
-};
-
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1
@@ -74,10 +78,7 @@ const styles = (theme: Theme) =>
     title: {
       flexGrow: 1
     }
-  });
+  })
+);
 
-type StateProps = ReturnType<typeof mapStateToProps>;
-
-type Props = StateProps & WithStyles<typeof styles>;
-
-export default connect(mapStateToProps)(withStyles(styles)(Bar));
+export default Bar;

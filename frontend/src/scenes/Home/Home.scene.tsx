@@ -1,19 +1,14 @@
 import React from "react";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 
-import {
-  Button,
-  createStyles,
-  Theme,
-  WithStyles,
-  withStyles
-} from "@material-ui/core";
+import { Button, createStyles, Theme, makeStyles } from "@material-ui/core";
 
 import { showLock } from "../../services/auth/auth.service";
 import { AppState } from "../../store";
 
-const Home: React.FC<Props> = props => {
-  const { classes, isLoggedIn } = props;
+const Home: React.FC<{}> = () => {
+  const classes = useStyles();
+  const isLoggedIn = useSelector((state: AppState) => state.auth.isLoggedIn);
 
   if (!isLoggedIn) {
     return (
@@ -46,13 +41,7 @@ const Home: React.FC<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: AppState) => {
-  return {
-    isLoggedIn: state.auth.isLoggedIn
-  };
-};
-
-const styles = (theme: Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     anonContainer: {
       paddingTop: "10vh",
@@ -60,10 +49,7 @@ const styles = (theme: Theme) =>
       fontSize: "3em"
     },
     container: {}
-  });
+  })
+);
 
-type StateProps = ReturnType<typeof mapStateToProps>;
-
-type Props = StateProps & WithStyles<typeof styles>;
-
-export default connect(mapStateToProps)(withStyles(styles)(Home));
+export default Home;
