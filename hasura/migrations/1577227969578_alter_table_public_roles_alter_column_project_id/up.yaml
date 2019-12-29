@@ -1,6 +1,0 @@
-- args:
-    sql: COMMENT ON COLUMN "public"."roles"."project_id" IS E''
-  type: run_sql
-- args:
-    sql: alter table "public"."roles" rename column "project_id" to "department_id";
-  type: run_sql

@@ -1,6 +1,0 @@
-- args:
-    sql: "\n           alter table \"public\".\"roles\"\n           add constraint
-      \"roles_department_id_fkey\"\n           foreign key (\"department_id\")\n           references
-      \"public\".\"departments\"\n           (\"id\") on update restrict on delete
-      restrict;\n      "
-  type: run_sql
