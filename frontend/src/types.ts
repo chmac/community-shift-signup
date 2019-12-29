@@ -1,3 +1,15 @@
+export type Allocation = {
+  id: string;
+  user_id: string;
+  profile?: {
+    display_name: string;
+    name?: string;
+    email?: string;
+    phone_number?: string;
+  };
+  comment?: string;
+};
+
 export type Shift = {
   id: string;
   start_date: string;
@@ -5,6 +17,7 @@ export type Shift = {
   end_date: string;
   end_time: string;
   count: number;
+  allocations?: Allocation[];
 };
 
 export type Role = {

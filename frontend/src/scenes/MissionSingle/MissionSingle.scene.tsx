@@ -2,10 +2,20 @@ import React from "react";
 import gql from "graphql-tag";
 import { RouteComponentProps } from "react-router-dom";
 import { useQuery } from "react-apollo";
+import Markdown from "markdown-to-jsx";
+
+import {
+  Paper,
+  Theme,
+  createStyles,
+  WithStyles,
+  withStyles
+} from "@material-ui/core";
 
 import { Mission } from "../../types";
 import RoleNew from "./scenes/RoleNew/RoleNew.scene";
 import ShiftNew from "./scenes/ShiftNew/ShiftNew.scene";
+import ShiftIndex from "./scenes/ShiftIndex/ShiftIndex.scene";
 
 const MissionSingleQuery = gql`
   query MissionSingleQuery($id: uuid!) {
@@ -26,6 +36,13 @@ const MissionSingleQuery = gql`
           end_date
           end_time
           count
+          allocations {
+            id
+            user_id
+            profile {
+              display_name
+            }
+          }
         }
       }
     }
@@ -33,6 +50,8 @@ const MissionSingleQuery = gql`
 `;
 
 const MissionSingle: React.FC<Props> = props => {
+  const { classes } = props;
+
   const { data, error, loading, refetch } = useQuery<{
     missions_by_pk?: Mission;
   }>(MissionSingleQuery, {
@@ -57,25 +76,18 @@ const MissionSingle: React.FC<Props> = props => {
     <div>
       <h1>{mission.name}</h1>
       <p>ID: {mission.id}</p>
-      <p>Description: {mission.description_md}</p>
+      <Paper elevation={1} className={classes.paper}>
+        <Markdown>{mission.description_md}</Markdown>
+      </Paper>
       {mission.roles &&
         mission.roles.map(role => {
           return (
             <div key={role.id}>
               <h2>{role.name}</h2>
-              <p>{role.description_md}</p>
-              <h3>Shifts</h3>
-              {role.shifts &&
-                role.shifts.map(shift => {
-                  return Array.from(Array(shift.count)).map((_, index) => {
-                    return (
-                      <div key={`${shift.id}_${index}`}>
-                        Start: {shift.start_date} / {shift.start_time}
-                        End: {shift.end_date} / {shift.end_time}
-                      </div>
-                    );
-                  });
-                })}
+              <Paper elevation={1} className={classes.paper}>
+                <Markdown>{role.description_md}</Markdown>
+              </Paper>
+              <ShiftIndex shifts={role.shifts} />
             </div>
           );
         })}
@@ -96,10 +108,20 @@ const MissionSingle: React.FC<Props> = props => {
   );
 };
 
+const styles = (theme: Theme) =>
+  createStyles({
+    paper: {
+      padding: theme.spacing(2)
+    },
+    card: {
+      minWidth: 275
+    }
+  });
+
 interface RouteParams {
   id: string;
 }
 
-type Props = RouteComponentProps<RouteParams>;
+type Props = RouteComponentProps<RouteParams> & WithStyles<typeof styles>;
 
-export default MissionSingle;
+export default withStyles(styles)(MissionSingle);
