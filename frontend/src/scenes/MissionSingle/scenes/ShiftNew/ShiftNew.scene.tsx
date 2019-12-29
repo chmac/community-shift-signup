@@ -55,7 +55,8 @@ const ShiftNew: React.FC<Props> = props => {
           })
             .then(response => {
               alert("Submission success #bZHJyc");
-              opts.resetForm();
+              // opts.resetForm();
+              opts.setSubmitting(false);
               onSubmit();
             })
             .catch(error => {
