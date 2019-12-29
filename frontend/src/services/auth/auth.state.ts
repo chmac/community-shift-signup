@@ -43,11 +43,12 @@ export const doesUserHaveRole = (state: AppState, role: string) => {
 
 type State = {
   isLoggedIn: boolean;
-  userId?: string;
+  userId: string;
   roles: string[];
 };
 const empty = {
   isLoggedIn: false,
+  userId: "",
   roles: []
 };
 
