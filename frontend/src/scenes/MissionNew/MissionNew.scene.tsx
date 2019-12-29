@@ -35,11 +35,9 @@ const MissionNew = () => {
       <Formik
         initialValues={{ name: "", description_md: "" }}
         validate={values => {
-          // debugger;
           return {};
         }}
         onSubmit={async (values, opts) => {
-          debugger;
           const {
             auth: { userId }
           } = store.getState();
