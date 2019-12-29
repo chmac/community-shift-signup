@@ -35,7 +35,7 @@ const ShiftNew: React.FC<Props> = props => {
       <h2>New Shift</h2>
       <Formik
         initialValues={{
-          role_id: "",
+          role_id: roles[0].id,
           start_date: "",
           start_time: "",
           end_date: "",
