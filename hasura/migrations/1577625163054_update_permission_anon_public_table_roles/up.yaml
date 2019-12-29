@@ -1,0 +1,17 @@
+- args:
+    permission:
+      allow_aggregations: false
+      columns:
+      - id
+      - mission_id
+      - name
+      - description_md
+      - created_at
+      - updated_at
+      filter: {}
+      limit: null
+    role: anon
+    table:
+      name: roles
+      schema: public
+  type: create_select_permission

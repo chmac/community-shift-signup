@@ -1,0 +1,6 @@
+- args:
+    role: anon
+    table:
+      name: shifts
+      schema: public
+  type: drop_select_permission
