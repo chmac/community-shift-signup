@@ -18,6 +18,7 @@ import { AppState } from "../../store";
 
 import Bar from "../Bar/Bar.scene";
 import Home from "../Home/Home.scene";
+import MissionNew from "../MissionNew/MissionNew.scene";
 
 const baseTheme = createMuiTheme();
 const theme = responsiveFontSizes(baseTheme);
@@ -36,6 +37,7 @@ const Routes = (props: Props) => {
           {isLoggedIn ? (
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/missions/new" component={MissionNew} />
             </Switch>
           ) : (
             <>
