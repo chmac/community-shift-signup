@@ -45,7 +45,7 @@ const ShiftIndex: React.FC<Props> = props => {
           {shiftsToSlots(shifts).map(slot => {
             const allocated = !!slot.allocation;
             return (
-              <Grid item md={4}>
+              <Grid item md={4} key={`${slot.id}_${slot.index}`}>
                 <Card
                   className={allocated ? "" : classes.cardAvailable}
                   key={`${slot.id}_${slot.index}`}
