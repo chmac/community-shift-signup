@@ -62,7 +62,9 @@ const ShiftIndex: React.FC<Props> = props => {
                     {!!slot.allocation?.profile ? (
                       slot.allocation.profile.display_name
                     ) : (
-                      <Button size="small">Register</Button>
+                      <Button size="small" color="primary">
+                        Register
+                      </Button>
                     )}
                   </CardActions>
                 </Card>
@@ -84,10 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
       padding: theme.spacing(2)
     },
     cardAvailable: {
-      backgroundColor: green[100]
-      // width: "100%"
-      // padding: theme.spacing(2),
-      // marginLeft: theme.spacing(2)
+      backgroundColor: green[50]
     }
   })
 );
